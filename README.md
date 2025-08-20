@@ -1,12 +1,31 @@
-# Day17proj1 - Bug Management API
+# 🐞 Bug Tracker API (Spring Boot + JWT Security)
 
-A simple Spring Boot REST API for managing bugs with pagination support.
+A **Bug Tracking System** built with **Spring Boot**, **Spring Security (JWT)**, and **JPA**.  
+This project provides secure authentication, role-based access control, and CRUD operations for managing software bugs.
+
+---
+
+## 🚀 Features
+
+- 🔐 **JWT Authentication** with role-based access:
+  - `ADMIN` → Create, Update, Delete bugs
+  - `DEVELOPER` → View & Update bugs
+  - `USER` → View bugs
+- 📄 **REST APIs** for bug management
+- 🔎 **Filtering & Search** bugs by status, assignee, project
+- 📑 **Pagination support**
+- 🛡️ **Spring Security** with custom JWT filter
+- 🗄️ **H2 Database** (in-memory) for quick testing
+- 🧩 **DTO + MapStruct** for clean response mapping
+
+---
 
 ## 📂 Project Structure
 
 ```
 Directory structure:
-└── adrin-bershik-c-j-day17proj1/
+└── adrin-bershik-c-j-day20proj1/
+    ├── README.md
     ├── mvnw
     ├── mvnw.cmd
     ├── pom.xml
@@ -17,18 +36,29 @@ Directory structure:
     │   │   │       └── example/
     │   │   │           └── day14proj1/
     │   │   │               ├── Day14proj1Application.java
+    │   │   │               ├── config/
+    │   │   │               │   └── SecurityConfig.java
     │   │   │               ├── controller/
+    │   │   │               │   ├── AuthController.java
     │   │   │               │   └── BugController.java
     │   │   │               ├── dto/
-    │   │   │               │   └── BugResponseDTO.java
+    │   │   │               │   ├── BugResponseDTO.java
+    │   │   │               │   ├── UserRequestDTO.java
+    │   │   │               │   └── UserResponseDTO.java
     │   │   │               ├── entity/
-    │   │   │               │   └── Bug.java
+    │   │   │               │   ├── Bug.java
+    │   │   │               │   └── User.java
     │   │   │               ├── mapper/
-    │   │   │               │   └── BugMapper.java
+    │   │   │               │   ├── BugMapper.java
+    │   │   │               │   └── UserMapper.java
     │   │   │               ├── repository/
-    │   │   │               │   └── BugRepository.java
+    │   │   │               │   ├── BugRepository.java
+    │   │   │               │   └── UserRepository.java
     │   │   │               └── service/
-    │   │   │                   └── BugService.java
+    │   │   │                   ├── BugService.java
+    │   │   │                   ├── JwtAuthFilter.java
+    │   │   │                   ├── JwtService.java
+    │   │   │                   └── UserService.java
     │   │   └── resources/
     │   │       └── application.properties
     │   └── test/
@@ -40,46 +70,25 @@ Directory structure:
     └── .mvn/
         └── wrapper/
             └── maven-wrapper.properties
-
 ```
 
-## 🚀 Features
+---
 
-- Create, Read, Update, and Delete bugs
-- Pagination with page numbers starting from 1
-- Data Transfer Object (DTO) mapping
-- RESTful API design
-- JPA & Hibernate for persistence
+## ⚙️ Tech Stack
 
-## 🛠️ Technologies Used
+- **Java 17**
+- **Spring Boot 3**
+- **Spring Security + JWT**
+- **Spring Data JPA**
+- **H2 Database** (default)
+- **Maven**
 
-- Java 17+
-- Spring Boot 3+
-- Spring Data JPA
-- Lombok
-- MapStruct
-- Maven
+---
 
-## ⚙️ Configuration
+## ▶️ Running the Project
 
-Edit `src/main/resources/application.properties` to match your database setup:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/bugdb
-spring.datasource.username=root
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Adrin-Bershik-C-J/day20proj1.git
+cd day20proj1
 ```
-
-## Running the project
-
-# Clone the repository
-```
-git clone https://github.com/Adrin-Bershik-C-J/day17proj1.git
-
-cd day17proj1
-```
-
-# Run with Maven
-./mvnw spring-boot:run
